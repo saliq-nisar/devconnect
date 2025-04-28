@@ -1,7 +1,7 @@
 function redBorder(WrappedComponent) {
   return function EnhancedComponent(props) {
     return (
-      <div style={{ border: '2px solid red' }}>
+      <div style={{ border: '2px solid red', padding: '10px' }}>
         <WrappedComponent {...props} />
       </div>
     );
