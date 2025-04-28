@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         
         <Route element={<Layout />}>
-          <Route path="/home" element={<EnhancedComponent />} />
+          <Route path="/home" element={<EnhancedComponent naa="sese" />} />
         </Route>
       </Routes>
     </Router>
