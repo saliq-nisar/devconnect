@@ -16,14 +16,14 @@ const App = () => {
       <Routes>
        
         <Route path="/" element={<Suspense fallback={<h1>loading...</h1>}>
-          <EnhancedComponent2 naa='dada' />
+          <EnhancedComponent2 naa={SignUp} />
           </Suspense>} />
         <Route path="/signup" element={<SignUp />} />
         
         <Route element={<Layout />}>
           <Route path="/home" element={
             <RequireAuth>
-              <EnhancedComponent naa="sese" />
+              <EnhancedComponent naa={SignUp} />
             </RequireAuth>
             } />
         </Route>
