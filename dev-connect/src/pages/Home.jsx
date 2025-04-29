@@ -1,6 +1,7 @@
 import React from "react";
 import useLocalStorage from "../customHooks/useLocalStorage";
 import useGet from "../customHooks/useGet";
+import List from "../components/List";
 const Home = () => {
    const [name,setName] = useLocalStorage("name", "John Doe");
    const{ data, error, loading} = useGet("https://fakestoreapi.com/products");
@@ -12,11 +13,7 @@ const Home = () => {
   return <>
    <h1>localstorage name : {name}</h1>;
     <h1>Data from API:</h1>
-    <ul>
-      {data.map((item) => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-    </ul>
+    <List items={data} />
     <button onClick={() => setName("Jane Doe")}>Change Name</button>
   </>
 };
