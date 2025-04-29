@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import SignUp from "./pages/Signup";
 import redBorder from "./hocs/redBorder";
+import RequireAuth from "./components/auth/RequireAuth";
 // import Home from './pages/Home'
 const Login = React.lazy(() => import('./pages/Login'));
 const Home = React.lazy(() => import('./pages/Home'));
@@ -20,7 +21,11 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         
         <Route element={<Layout />}>
-          <Route path="/home" element={<EnhancedComponent naa="sese" />} />
+          <Route path="/home" element={
+            <RequireAuth>
+              <EnhancedComponent naa="sese" />
+            </RequireAuth>
+            } />
         </Route>
       </Routes>
     </Router>
