@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 function RequireAuth({ children }) {
-  const isAuthenticated = true
+  const isAuthenticated = false
 
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;
