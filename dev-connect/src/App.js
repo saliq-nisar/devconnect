@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import SignUp from "./pages/Signup";
 import redBorder from "./hocs/redBorder";
 import RequireAuth from "./components/auth/RequireAuth";
+import SecondPage from "./pages/SecondPage";
 // import Home from './pages/Home'
 const Login = React.lazy(() => import('./pages/Login'));
 const Home = React.lazy(() => import('./pages/Home'));
@@ -19,6 +20,7 @@ const App = () => {
           <EnhancedComponent2 naa={SignUp} />
           </Suspense>} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/second" element={<SecondPage/>} />
         
         <Route element={<Layout />}>
           <Route path="/home" element={
