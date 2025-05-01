@@ -19,7 +19,7 @@ router.post('/create', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
       const page = parseInt(req.query.page) || 1;       // default to page 1
-      const limit = parseInt(req.query.limit) || 3;     // default to 10 users per page
+      const limit = parseInt(req.query.limit) || 3;     // default to 3 users per page
       const skip = (page - 1) * limit;
   
       const totalUsers = await User.countDocuments();
@@ -74,6 +74,25 @@ router.get('/:name', async (req, res) => {
       res.status(400).json({ error: 'Delete failed' });
     }
   });
+
+  // Search users by name (case-insensitive, partial match)
+router.get('/search/users', async (req, res) => {
+  try {
+    const { name } = req.query;
+
+    if (!name) {
+      return res.status(400).json({ error: 'Name query parameter is required' });
+    }
+
+    // Case-insensitive and partial match using RegExp
+    const users = await User.find({ name: { $regex: name, $options: 'i' } });
+
+    res.json({ count: users.length, users });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
   
 
 module.exports = router;
