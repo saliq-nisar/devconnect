@@ -15,14 +15,27 @@ router.post('/create', async (req, res) => {
 });
 
 // Get all users
+// Get all users with pagination
 router.get('/', async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+    try {
+      const page = parseInt(req.query.page) || 1;       // default to page 1
+      const limit = parseInt(req.query.limit) || 3;     // default to 10 users per page
+      const skip = (page - 1) * limit;
+  
+      const totalUsers = await User.countDocuments();
+      const users = await User.find().skip(skip).limit(limit);
+  
+      res.json({
+        totalUsers,
+        page,
+        totalPages: Math.ceil(totalUsers / limit),
+        users
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  
 
 // Get a user by name
 router.get('/:name', async (req, res) => {
