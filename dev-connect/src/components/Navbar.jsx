@@ -9,5 +9,6 @@ const Navbar = (props) => {
     </nav>
   );
 };
+ 
 
 export default React.memo(Navbar);
