@@ -19,7 +19,7 @@ const Login = () => {
           });
           setToken(response.data.token);
           alert("logged in successfully")
-          response.data.message =="Login successful"? navigate("/home"):alert("error logging in")
+          response.data.message === "Login successful" ? navigate("/home"):alert("error logging in")
           console.log("Login successful:", response.data);
         } catch (error) {
           console.error("Login failed:", error);
