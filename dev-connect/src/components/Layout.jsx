@@ -6,7 +6,7 @@ import Footer from "./Footer";
 const Layout = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Navbar name = "Home" />
+      <Navbar />
       <main style={{ flex: 1, padding: "1rem" }}>
         <Outlet /> 
       </main>

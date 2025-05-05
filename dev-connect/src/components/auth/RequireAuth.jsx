@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
 
 function RequireAuth({ children }) {
-  const isAuthenticated = true
+  const token = localStorage.getItem("token");
 
-  if (!isAuthenticated) {
+  if (!token) {
     return <Navigate to="/" replace />;
   }
 
